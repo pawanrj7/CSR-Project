@@ -1,0 +1,13 @@
+{% extends 'proposals/post_base.html' %}
+
+{% block title %}Delete Event - Sahyog{% endblock %}
+
+{% block pre_post %}
+    <div class="container">
+      <form method="post">{% csrf_token %}
+        <br>
+        <p style="font-family: Bitter; font-size: x-large;">Are you sure you want to delete "{{ object }}" ?</p><br>
+        <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+      </form>
+    </div>
+{% endblock %}

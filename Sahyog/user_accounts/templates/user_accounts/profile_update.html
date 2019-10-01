@@ -1,0 +1,12 @@
+{% extends "user_accounts/base.html" %}
+{% block content %}
+
+<p>Username(unchangeable) : {{ user.username }}</p>
+<form method="POST" id="UserProfileForm">
+  <div class="form-group">
+  {% csrf_token %}
+  {{ form.as_p }}
+</div>
+  <input type="submit" name="" value="Update" class="btn btn-primary">
+</form>
+{% endblock %}

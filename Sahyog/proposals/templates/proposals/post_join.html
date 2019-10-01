@@ -1,0 +1,16 @@
+{% extends 'proposals/post_base.html' %}
+
+{% block title %}Create your post{% endblock %}
+
+{% block post_content %}
+    <div class="container">
+        {% for person in company_list %}
+          {% if user.id == person.user_id %}
+            <a href="{% url 'proposals:post_new' %}">Create Your Own Event</a>
+            <br>
+          {% endif %}
+        {% endfor %}
+        <p>If you can't see the "Create Your Own Event" option, it is because you do not have access to this feature.Register as a company to create new proposals.</p>
+  
+      </div>
+{% endblock %}

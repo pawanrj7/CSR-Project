@@ -1,0 +1,24 @@
+{% extends 'proposals/post_base.html' %}
+{% block title %}Proposals List - Sahyog{% endblock %}
+{% block post_content %}
+  <div class="container">
+    <h1 style="font-family: Amaranth;">CSR Events</h1>
+     {% for post in object_list %}
+      <br>
+      <div class="media border p-3">
+        <div class="media-body">
+          <p  style="text-decoration: none; font-size: x-large;display: inline;" class="text-body">{{ post.InitiativeTitle }}</p> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+          <a href="{% url 'proposals:post_joining' post.id %}" class="btn btn-success btn active w-25" style="display: inline;">View Event Details</a>
+          {% if post.name == user.username %}<br><br>
+            <a href="{% url 'proposals:post_edit' post.id %}" class="btn btn-info btn-sm">Edit</a>
+            <a href="{% url 'proposals:post_delete' post.id %}" class="btn btn-info btn-sm">Delete</a>
+          {% endif %}
+          <br>
+        </div>
+      </div>
+
+       {% endfor %}
+
+  </div>
+  
+{% endblock %}

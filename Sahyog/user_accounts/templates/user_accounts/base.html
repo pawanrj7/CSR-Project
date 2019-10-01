@@ -1,0 +1,159 @@
+{%load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static './user_accounts/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth:400,700|Carter+One|Courgette|Cuprum:400,700|Fugaz+One|Merienda:400,700|Oleo+Script:400,700|Pacifico" rel="stylesheet">
+    <link href="https://fonts..googleapiscom/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Coiny|Josefin+Sans|Libre+Baskerville|Merriweather" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+
+<style>
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+</style>
+  <body>
+  <!-- header-->
+     <section id="top-bar" class="p-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <i class="fas fa-phone"></i> (617)-555-5555
+            </div>
+            <div class="col-md-4">
+              <i class="fas fa-envelope-open"> <a href="#">contact@acutus.co</a></i>
+            </div>
+            <div class="col-md-4">
+              <div class="social text-right">
+               <a href="#" class="fa fa-facebook"></a>
+               <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-youtube"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-pinterest"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- headerclosed-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-#fff3f0 "
+      style="background-color: blue">
+      <a href="#" class="navbar-brand float-right"><img class="img-fluid float-left e7" style = "width: 150px; height: 100px; margin-top: 0px;" src="{% static './user_accounts/img/logo.png' %}"></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarcon" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse border-bottom" id="navbarcon">
+        <ul class="navbar-nav mr-auto" style="font-family: 'Nunito Sans'; font-weight: bold; font-size: large;">
+          <li class="nav-item">
+            <a href="{% url 'index' %}" class="nav-link" style="hover:white;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">About</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item float-right">
+            <a href="{% url 'proposals:post_join' user.id %}" class="nav-link">Create Proposal</a>
+          </li>
+          <li class="nav-item float-right">
+              <a href="{% url 'proposals:post_list' %}" class="nav-link">All proposals</a>
+            </li>
+          <li class="nav-item"><a href="{% url 'proposals:for_user' %}" class="nav-link ">Your Proposals</a></li>
+          <li class="nav-item"><a href="{% url 'proposals:see_attending' %}" class="nav-link ">Events Attending</a></li>
+
+        <li class="nav-item"><a href="/user_accounts/user_profile/" class="nav-link ">Your Profile</a></li>
+          {% else %}
+          <li><a href="/user_accounts/register/" class="nav-link">Register</a></li>
+          <li class="nav-item dropdown">
+            <a href="" class=" dropdown-toggle nav-link" id="navbardrop" data-toggle="dropdown">Login</a>
+            <div class="dropdown-menu">
+              <a href="/user_accounts/user_login/" class="dropdown-item">Login for Individual</a>
+              <a href="/user_accounts/complogin/" class="dropdown-item">Login for Company</a>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <hr style="color: black;">
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <br>
+    <div class="container-fluid foo bg-light">
+      <footer>
+        <div class="e73 container-fluid border-top" style="font-family: 'Nunito Sans'">
+          <h6 class="text-dark"><small><strong>Sahyog</strong></small></h6>
+          <h4 align="center" class="text-dark">USEFUL LINKS<hr width=500px class="style"></h4>
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a class="text-dark e26 " href="{% url 'index' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="text-dark e26" href="">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="text-dark e26" href="">CONTACT US</a>
+            </li>
+          </ul><br>
+        </div>
+        </footer>
+        <p align="center" class="text-dark">Copyright &copy; Sahyog. All Rights Reserved </p>
+
+      </div>
+</body>
+</html>

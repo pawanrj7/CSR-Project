@@ -1,0 +1,13 @@
+{% extends 'proposals/post_base.html' %}
+
+{% block title %}Create an Event - Sahyog{% endblock %}
+
+{% block post_content %}
+<form method="POST" id="postForm">
+  <div class="form-group">
+  {% csrf_token %}
+  {{ form.as_p }}
+</div>
+  <input type="submit" name="" value="Post" class="btn btn-primary">
+</form>
+{% endblock %}

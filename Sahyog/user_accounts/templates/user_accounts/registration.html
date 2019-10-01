@@ -1,0 +1,32 @@
+{% extends "user_accounts/base.html" %}
+
+{% block title %}Register - Sahyog{% endblock %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+  <div class="container">
+    <div class="row" style="margin-right: -15px;margin-left: -15px;">
+      <div class="container" style="max-width:380px;"> 
+      {% if registered %}
+        <h1>Thank you for registering! Please login.</h1>
+        
+      {% else %}
+        <h1>Register Here</h1>
+        <h3>Just fill out the form.</h3>
+<form enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+          {% csrf_token %}
+          {{ user_form | crispy }}
+          {{ profile_form | crispy }}
+          <input type="submit" name="" value="Register" class="btn btn-primary btn-lg">
+        </div>
+        </form>
+
+      {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

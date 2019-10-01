@@ -1,0 +1,9 @@
+{% extends 'proposals/post_base.html' %}
+{% block title %}Attendees List - Sahyog{% endblock %}
+{% block post_content %}
+	<p>{{ blog_posts.attendees.count }} members going</p>
+	{% for person in blog_posts.attendees.all %}
+	<br>
+		<a href="{% url 'proposals:attendees_info' username=person.username pk=person.id %}">{{ person }}</a>
+	{% endfor %}
+{% endblock %}

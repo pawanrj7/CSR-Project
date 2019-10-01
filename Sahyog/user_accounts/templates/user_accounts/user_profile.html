@@ -1,0 +1,27 @@
+{% extends "user_accounts/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<br>
+  <div class="container">
+    <div class="row">
+        <h1 style="font-family: Amaranth;"> Profile</h1>
+        <div class="card bg-light" style="width:300px;height:500px;">
+            <img src="https://2012.atlanta.wordcamp.org/files/2012/01/mystery-man.jpg-bpfull.jpg" 
+            class="card-img-top mr-3 mt-3 rounded-circle" style="width:100px;margin-left:100px;">
+            <hr>
+            <div class="card-body">
+        {% for person in people_list %}
+            {% if user == person.user %}
+                <p class="card-text" style="font-family:'Nunito Sans'">User Name: {{ person.user }}</p>
+                <p class="card-text" style="font-family:'Nunito Sans'">Address : {{ person.address }}</p>
+                <p class="card-text" style="font-family:'Nunito Sans'">Category: {{ person.category }}</p>
+                <p class="card-text" style="font-family:'Nunito Sans'">Contact number: {{ person.phone }}</p>
+                <a href="{% url 'profile_update' person.id %}" class="btn btn-info btn-sm">Edit Profile</a>
+
+            {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

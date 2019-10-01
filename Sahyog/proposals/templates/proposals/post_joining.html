@@ -1,0 +1,31 @@
+{% extends 'proposals/post_base.html' %}
+{% block title %}Details of the CSR event - Sahyog{% endblock %}
+{% block post_content %}
+	<div class="container">
+		<p style="font-family: Bitter; font-size: x-large; color: red;">Event ID: <em style=" font-size: 20px; color: black">{{ blog_posts.id}}</em></p>
+		<p style="font-family: Bitter; font-size: x-large; color: red;">Initiative Title:  <em style="font-family:Arial, Helvetica, sans-serif; font-size: 20px;color: black">{{ blog_posts.InitiativeTitle}}</em></p>
+		<p style="font-family: Bitter; font-size: x-large;color: red;">Budget:  <em style="font-family:Arial, Helvetica, sans-serif; font-size: 20px; color: black">{{ blog_posts.budget}}</em></p>
+		<p style="font-family: Bitter; font-size: x-large;color: red;">Requirements:  <em style="font-family:Arial, Helvetica, sans-serif; font-size: 20px; color: black">{{ blog_posts.requirements}}</em>
+		</p>
+		<p style="font-family: Bitter; font-size: x-large;color: red;">Details:  <em style=" font-size: 20px; color: black">{{ blog_posts.details}}</em></p>
+		{% if user in blog_posts.attendees.all %}
+			<a class="btn btn-danger btn active w-25" href="{% url 'proposals:leave' pk=blog_posts.pk %}">Leave</a>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		{% else %}
+			<a class="btn btn-success btn active w-25" href="{% url 'proposals:join' pk=blog_posts.pk %}">Join</a>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endblock %}

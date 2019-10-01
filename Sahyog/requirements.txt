@@ -1,0 +1,4 @@
+Django==2.1.7
+django-braces==1.13.0
+mysqlclient==1.4.2.post1
+pytz==2018.9

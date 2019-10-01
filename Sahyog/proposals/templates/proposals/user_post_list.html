@@ -1,0 +1,32 @@
+{% extends 'proposals/post_base.html' %}
+
+{% block title %}Your Post - Sahyog{% endblock %}
+
+{% block pre_post %}
+<div class="col-md-4">
+  <h1 style="font-family: Amaranth;">Post History</h1>
+</div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+  <br>
+  {% for post in post_list %}
+  {% if post.name == user.username %}
+    <div class="media border p-3">
+          <div class="media-body">
+            <li>
+              <a href="{% url 'proposals:post_join' post.id %}" style="text-decoration: none; font-size: x-large;" class="text-body">{{ post.InitiativeTitle }}</a> &nbsp; &nbsp;
+                <a href="{% url 'proposals:post_edit' post.id %}" class="btn btn-info btn-sm">Edit</a>
+                <a href="{% url 'proposals:post_delete' post.id %}" class="btn btn-info btn-sm">Delete</a>
+                <a href="{% url 'proposals:name_attendees' post.id %}" class="btn btn-info btn-sm">Attendees</a>
+              <br>
+              <br>
+            </li>
+          </div>
+        </div>
+          
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

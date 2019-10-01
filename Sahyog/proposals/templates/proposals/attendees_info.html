@@ -1,0 +1,11 @@
+{% extends 'proposals/post_base.html' %}
+{% block title %}Attendees Information-Sahyog{% endblock %}
+{% block pre_post %}
+{% for person in attendees_list %}
+	<p>{{ person }}</p>
+	<p>{{ person.email }}</p>
+	<p>{{ person.phone }}</p>
+	<p>{{ person.address }}</p>
+	<p>{{ person.category }}</p>
+{% endfor %}
+{% endblock %}

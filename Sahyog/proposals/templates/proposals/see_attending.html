@@ -1,0 +1,22 @@
+{% extends 'proposals/post_base.html' %}
+
+{% block title %}Events you are attending - Sahyog{% endblock %}
+
+{% block pre_post %}
+<div class="container">
+  <h1 style="font-family: Amaranth;">Events you are attending</h1>
+</div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+  <br>
+  {% for post in new_list %}
+    {% for person in post.attendees.all %}
+        {% if person.username == user.username %}
+            <a href="{% url 'proposals:post_joining' post.id %}">{{ post.InitiativeTitle }}</a><br>
+        {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>
+{% endblock %}
