@@ -2,7 +2,7 @@
 ### Together We Grow
 Sahyog is a web portal that let's organizations and individuals to meet at a common stage and help the society in a better way. This portal not only will help the underprivileged parts of our society but also help organizations to do the work efficiently.
 
-The idea of the portal is given by CDK Global ltd. and was developed in the Grand Finale of Smart India Hackathon 2019 held in Hyerabad.
+The idea of the portal is given by CDK Global ltd. and was developed in the Grand Finale of Smart India Hackathon 2019 held in Hyderabad.
 ### Features of the Portal
 
 The basic features of the Portal are:
